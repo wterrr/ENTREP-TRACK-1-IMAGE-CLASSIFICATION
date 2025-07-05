@@ -1,12 +1,10 @@
-# Endoscopy Image Classification
-
-A deep learning pipeline for classifying endoscopy images into 7 anatomical categories using ensemble methods and advanced training techniques.
-
-## Leaderboard
+# ENTREP Image Classification
 
 <div align="center">
   <img src="assets/leader_board.png" alt="Leaderboard" />
 </div>
+
+A deep learning pipeline for classifying endoscopy images into 7 anatomical categories using ensemble methods and advanced training techniques.
 
 ## Features
 
