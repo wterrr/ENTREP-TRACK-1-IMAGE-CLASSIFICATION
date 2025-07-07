@@ -34,11 +34,12 @@ The model classifies images into 7 anatomical categories:
 │   ├── transforms.py      # Custom augmentation classes
 │   ├── losses.py          # FocalLoss implementation
 │   ├── dataset.py         # EarDataset class
-│   └── classifier.py      # Main EndoscopyClassifier class
+│   ├── classifier.py      # Main EndoscopyClassifier class
 ├── notebooks/
 │   ├── train.ipynb        # Original Jupyter notebook
 │   └── predict.ipynb      # Prediction notebook
 ├── train.py               # Main training script
+├── predict.py             # Prediction script
 ├── requirements.txt       # Dependencies
 └── README.md             # This file
 ```
@@ -106,6 +107,32 @@ python train.py --data_path /path/to/your/dataset --project_name my_experiment
 - `--data_path`: Path to dataset directory (required)
 - `--project_name`: Project name for output directory (default: "endoscopy_95")
 - `--test_size`: Test set size ratio (default: 0.2)
+
+### Prediction
+
+Run predictions on test images using trained ensemble models:
+
+```bash
+python predict.py --model-dir /path/to/models --csv-path /path/to/test.csv --img-dir /path/to/images --output-path predictions.json
+```
+
+**Arguments:**
+- `--model-dir`: Path to the directory containing ensemble models (required)
+- `--csv-path`: Path to the CSV file containing test image names (required)
+- `--img-dir`: Path to the directory containing test images (required)
+- `--output-path`: Path where predictions will be saved in JSON format (required)
+- `--use-tta`: Enable test-time augmentation (default: True)
+- `--no-tta`: Disable test-time augmentation
+
+**Example:**
+```bash
+python predict.py \
+    --model-dir ./models/ensemble \
+    --csv-path ./test_data/test_images.csv \
+    --img-dir ./test_data/images \
+    --output-path ./results/predictions.json \
+    --use-tta
+```
 
 ### Dataset Structure
 
